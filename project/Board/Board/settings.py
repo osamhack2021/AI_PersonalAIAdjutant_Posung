@@ -30,7 +30,10 @@ SECRET_KEY = 'django-insecure-$9$%=#vy^(^ms-+3o5k#ts$e^8tu&*s(kpe+d4$ch5-=f$u^z+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'azure-demo-app.azurewebsites.net',
+]
 
 
 # Application definition
@@ -134,12 +137,15 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    STATIC_DIR,
-]
+STATIC_ROOT = (os.path.join(BASE_DIR, 'Myproject/static_files/'))
+STATICFILES_DIRS = (
+os.path.join(BASE_DIR, 'static/'), #Not Required since you already mentioned it in STATIC_URL
+('myapp', os.path.join(BASE_DIR, 'myapp', 'static')),
+)
 
 # 로그인 성공후 이동하는 URL
 LOGIN_REDIRECT_URL = '/'
 
 # 로그아웃시 이동하는 URL
 LOGOUT_REDIRECT_URL = '/'
+
