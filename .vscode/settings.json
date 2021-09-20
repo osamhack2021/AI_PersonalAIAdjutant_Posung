@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/8fddb2f6-1b7c-4051-80cc-42fd42f8925c/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/azure-demo-app",
+    "appService.deploySubpath": "project/Board"
+}
