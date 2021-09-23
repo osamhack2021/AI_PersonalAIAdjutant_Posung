@@ -7,3 +7,11 @@ class Board(models.Model):
     content = models.TextField(null=False)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
+
+class Schedule(models.Model):
+    author = models.CharField(max_length=10, null=False)
+    title = models.CharField(max_length=100, null=False)
+    content = models.TextField(null=False)
+    created_date = models.DateField()
+    created_time = models.TimeField()
+    
