@@ -33,6 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     'azure-demo-app.azurewebsites.net',
+    'azure-demo-app-2.azurewebsites.net',
 ]
 
 

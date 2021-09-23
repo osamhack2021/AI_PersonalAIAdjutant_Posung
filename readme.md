@@ -1,5 +1,5 @@
 # 1. 메인 페이지 빌드
-https://kyuhyuk.kr/article/python/2020/08/15/Django-Board-Post-View 따라함
+https://kyuhyuk.kr/article/python/2020/08/14/Django-Board-Write-Post 따라함
 
 # 2. 로그인 빌드
 https://wikidocs.net/71259 따라함
@@ -14,3 +14,12 @@ https://wikidocs.net/71259 따라함
 2. no module named 'django' azure 버그 - https://stackoverflow.com/questions/58449933/modulenotfounderror-no-module-named-django-when-trying-to-deploy-django-ser #requiremenets.txt 적용해서 해결
 3. 템플릿 미적용 버그 - https://stackoverflow.com/questions/65431326/django-app-on-azure-not-getting-static-files #코드구조 변경
 
+# 5. Schedule Calender
+1. table 생성 (name: Schedule) 경로: board_app/models
+2. input test data (name, date, time, todo)
+3. create simple html template - table 연동
+
+# 6. todo (working)
+1. navbar 메뉴 추가: 예정사항, 실시사항 - 1. https://freehoon.tistory.com/125 2. https://getbootstrap.com/docs/4.3/examples/navbars/
+2. https://ninetynine-2026.tistory.com/518 따라해보기
+3. 스케줄 페이지 생성, model 내 table과 연동 필요

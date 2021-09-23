@@ -7,26 +7,47 @@
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 </head>
 <body>
-    
-<header>
-    <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
-        <div class="container d-flex justify-content-between">
-            
-            <a href="/" class="navbar-brand d-flex align-items-center">
-                <strong>나만의 AI 부관</strong>
-            </a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    {% if user.is_authenticated %}
-                    <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
-                    {% else %}
-                    <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
-                    {% endif %}
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/"><strong>나만의 AI 부관</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="">실시사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="schedule">예정사항</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link disabled" href="">실시사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">예정사항</a>
+            </li>
+            {% endif %}       
+          </ul>
         </div>
-    </div>
-</header>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+                {% else %}
+                <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
+                {% endif %}
+            </li>
+        </ul>
+      </nav>
+    
+
+{% if user.is_authenticated %}
 <div class="container">
     <table class="table">
         <thead class="thead-light">
@@ -65,6 +86,36 @@
         </div>
     </div>
 </div>
+{% else %}
+{% block content %}
+<div class="container my-3">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <div class="row my-3">
+        <div class="col-4">
+            <h4>로그인</h4>
+        </div>
+        <div class="col-8 text-right">
+            <span>또는 <a href="{% url 'common:signup' %}">계정을 만드세요.</a></span>
+        </div>
+    </div>
+    <form method="post" class="post-form" action="{% url 'common:login' %}">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <div class="form-group">
+            <label for="username">사용자ID</label>
+            <input type="text" class="form-control" name="username" id="username"
+                   value="{{ form.username.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" class="form-control" name="password" id="password"
+                   value="{{ form.password.value|default_if_none:'' }}">
+        </div>
+        <button type="submit" class="btn btn-primary">로그인</button>
+    </form>
+</div>
+{% endblock %}
+{% endif %}
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>
