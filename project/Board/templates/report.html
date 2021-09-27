@@ -15,15 +15,15 @@
       
         <div class="collapse navbar-collapse" id="navbarsExample04">
           <ul class="navbar-nav mr-auto">
-
-              <a class="nav-link" href="notice/">공지사항 <span class="sr-only"></span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="/notice/">공지사항 <span class="sr-only">(current)</span></a>
             </li>
             {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="report/">실시사항</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="/report/">실시사항 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="schedule">예정사항</a>
+                <a class="nav-link" href="/schedule">예정사항</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -48,8 +48,46 @@
     
 
 {% if user.is_authenticated %}
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">#</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for report in reports %}
+        <tr class="text-center">
+            <th scope="row">
+                <span>{{ report.id }}</span>
+            </th>
+            <td>
+                <a href="/report/{{ report.id }}">
+                    <span>{{ report.title }}</span>
+                </a>
+            </td>
+            <td>
+                <span>{{ report.author }}</span>
+            </td>
+            <td>
+                <span>{{ report.created_date | date:"Y-m-d h:i" }}</span>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
+    <div class="row">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+            <a class="btn btn-primary" href="report_post/" role="button">글쓰기</a>
+        </div>
+    </div>
 
+</div>
 {% else %}
 {% block content %}
 <div class="container my-3">
