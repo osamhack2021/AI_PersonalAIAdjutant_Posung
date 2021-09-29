@@ -21,8 +21,11 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    path('report/', include('report.urls')),
+    path('notice/', include('notice.urls')),
     path('', include('board_app.urls')),
     path('admin/', admin.site.urls),
     path('common/', include('common.urls')),
+    
     path('', views.index, name='index'),  # '/' 에 해당되는 path
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

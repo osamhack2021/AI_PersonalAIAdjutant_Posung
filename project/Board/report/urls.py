@@ -4,11 +4,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('post', views.post, name='post'),
-    path('post/<int:id>', views.detail, name='detail'),
-    path('schedule', views.schedule, name='schedule'),
-
+    path('', views.report, name='report'),
+    path('report_post/', views.report_post, name='report_post'),
+    path('<int:id>', views.report_detail, name='report_detail'),
 
   
 
