@@ -1,5 +1,5 @@
 secrets.json
-/workspaces/AI_PersonalAIAdjutant_Posung/venv
+venv/
 *.pyc
 
 
