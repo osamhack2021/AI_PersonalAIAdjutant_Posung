@@ -19,6 +19,11 @@
                    value="{{ form.username.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
+            <label for="rank">계급</label>
+            <input type="text" class="form-control" name="rank" id="rank"
+                   value="{{ form.rank.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
             <label for="password1">비밀번호</label>
             <input type="password" class="form-control" name="password1" id="password1"
                    value="{{ form.password1.value|default_if_none:'' }}">
