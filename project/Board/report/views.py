@@ -17,7 +17,7 @@ def report_post(request):
         content = request.POST['content']
         content2 = request.POST['content2']
         content3 = request.POST['content3']
-        report = Report(author=author, rank=rank title=title, content=content, content2=content2, content3=content3)
+        report = Report(author=author, rank=rank, title=title, content=content, content2=content2, content3=content3)
         report.save()
         return HttpResponseRedirect(reverse('report'))
     else:
